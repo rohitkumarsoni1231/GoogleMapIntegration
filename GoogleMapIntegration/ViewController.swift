@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func checkLocationServices() {
         DispatchQueue.global().async {
             if CLLocationManager.locationServicesEnabled() {
+                self.mapView.settings.myLocationButton = true
                 self.setupLocationManager()
                 self.checkLocationAuthorization()
                 self.startTrackingUserLocation()
@@ -46,10 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.isMyLocationEnabled = true
         locationManager.startUpdatingLocation()
     }
-    
-    @IBAction func didTapOnCurrentLocation(_ sender: Any) {
-    }
-    
+ 
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
